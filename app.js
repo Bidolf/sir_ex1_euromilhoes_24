@@ -21,19 +21,18 @@ app.get('/euro', (req, res) => {
 function bet() {
   let numbers = generate(5,1,50);
   let stars = generate(2,1,12)
-  newBet = {
+  let newBet = {
     "numbers": numbers,
     "stars": stars
   }
   console.log(newBet)
-  displayBet(newBet)
+  return newBet
 }
 function generate(n, min, max){
   let array = Array.from({ length: max }, (v, k) => k + min)
   durstenfeldShuffle(array)
   let numbers = array.slice(0, n)
   numbers.sort((a, b) => { return a - b })
-  console.log(numbers)
   return numbers
 }
 function durstenfeldShuffle(array) {
