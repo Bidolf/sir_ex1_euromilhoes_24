@@ -8,39 +8,41 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
         getNewBet()
     });
-
-
-    function getNewBet() {
-        fetch('http://localhost:3000/euro')
-            .then((response) => response.json())
-            //este response é um promise
-            .then(bet => {
-                //debugger;
-                console.log(bet.numbers);
-                console.log(bet.stars)
-            })
-            .catch((error) => console.log(error))
-
-        theOLNumbers = document.getElementById('olMain');
-        theOLNumbers.innerHTML = "";
-
-        bet.numbers.forEach(number => {
-            newLi = document.createElement("li");
-            newLi.innerHTML = number;
-            theOLNumbers.appendChild(newLi);
-        });
-
-        theOLStars = document.getElementById('olStars');
-        theOLStars.innerHTML = "";
-
-        bet.stars.forEach(star => {
-            newLi = document.createElement("li");
-            newLi.innerHTML = star;
-            theOLStars.appendChild(newLi);
-        });
-    }
 })
 
+function getNewBet() {
+    fetch('http://localhost:3000/euro')
+        .then((response) => response.json())
+        //este response é um promise
+        .then(bet => {
+            //debugger;
+            console.log("euro.js");
+            console.log(bet);
+            displayBet(bet)
+        })
+        .catch((error) => console.log(error))
+   
+}
+
+function displayBet(bet){
+    theOLNumbers = document.getElementById('olMain');
+    theOLNumbers.innerHTML = "";
+
+    bet.numbers.forEach(number => {
+        newLi = document.createElement("li");
+        newLi.innerHTML = number;
+        theOLNumbers.appendChild(newLi);
+    });
+
+    theOLStars = document.getElementById('olStars');
+    theOLStars.innerHTML = "";
+
+    bet.stars.forEach(star => {
+        newLi = document.createElement("li");
+        newLi.innerHTML = star;
+        theOLStars.appendChild(newLi);
+    });
+}
 
 function generateBet(idNumbers, idStars) {
     let numbers = getShuffledNumbers(50, 5)
