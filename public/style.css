@@ -1,0 +1,88 @@
+/*
+    fomos a Google Fonts, buscar o embed code desta font
+    podiamos ir a qualque outro repositorio de fonts
+    se usarmos o método de "embed code"
+        não precisamos de instalar a font na máquina
+        a máquina vai buscá-la sozinha
+    tens de modificar a font-family
+        e adicionar o import url da font
+*/
+@font-face {
+    font-family: anotherFont;
+    src: url("Merriweather-Black.ttf");
+}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/*
+    se quisermos guardar a font no servidor, usamos isto
+@font-face {
+    font-family: pixelChique;
+    src: url(JacquardaBastarda9-Regular.ttf)
+
+}
+*/
+
+html {
+    background-color: lightgreen;
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    /*
+        tenta usar a 1ª font. se não houver, vai à 2ª
+        "sans-serif" ´o qu a máquina tiver como default
+    */
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+}
+
+h1 {
+    color: darkgreen
+}
+
+#divBet {
+    background-color: palegreen;
+    width: 60%;
+    text-align: center;
+    border-radius: 50px;
+    padding: 10px;
+}
+
+#divcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+ol.numbers {
+    padding: 0px;
+}
+
+ol.numbers li {
+    font-family: anotherFont;
+    display: inline-block;
+    width: 70px;
+    font-size: 35px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px;
+    margin: 5px;
+}
+
+#olMain li {
+    background-color: lightgray;
+}
+
+#olStars li {
+    background-color: rgb(255, 238, 154);
+}
+
+#genBtn {
+    width: 200px;
+    margin-block: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: x-large;
+    font-weight: bold;
+}

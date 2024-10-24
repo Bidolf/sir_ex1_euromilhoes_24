@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> === Euromilhões === </title>
+    
+    <link rel="stylesheet" href="style.css" type=text/css>
+    <script type="text/javascript" src="euro.js"></script>
+    <!-- se a página não tiver carregada 
+        e o script usa os elementos antes de existirem
+            temos de fazer algo para não dar erro
+        OU pôr <script> depois de </html>
+        OU usar um event listener para DOMContentLoaded-->
+</head>
+<body>
+    <h1>Euromilhões</h1>
+
+    <div id="divcontainer">
+    <div id="divBet">
+        <div id="divMain">
+            <ol class="numbers" id="olMain">
+                <li onclick="alert('nah');">12</li>
+                <!-- não mistures o js com o html-->
+                <li>24</li>
+                <li>33</li>
+                <li>44</li>
+                <li>49</li>
+            </ol>
+        </div>
+        <div id="divStars">
+            <ol class="numbers" id="olStars">
+                <li>1</li>
+                <li>3</li>
+            </ol>
+        </div>
+        <button id="genBtn"> Gerar Chave </button>
+    </div>
+    <h1>Boa Sorte</h1>
+    pedro moreira
+    (editado por diogo marques)
+    </div>
+</div></body>
+</html>
+
