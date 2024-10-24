@@ -1,3 +1,6 @@
+const http = "https://sir-ex1-euromilhoes-24.onrender.com"
+//const http = "https://localhost:3000"
+
 //usando este listener faz com que
 //  o script só corre quando o conteudo foi carregado
 document.addEventListener('DOMContentLoaded', (e) => {
@@ -11,7 +14,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 })
 
 function getNewBet() {
-    fetch('http://localhost:3000/euro')
+    fetch(`${http}/euro`)
         .then((response) => response.json())
         //este response é um promise
         .then(bet => {

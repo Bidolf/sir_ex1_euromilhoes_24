@@ -19,12 +19,11 @@ app.get('/euro', (req, res) => {
 })
 
 function generate(n, min, max){
-  let setOfNumbers = new Set();
-  while(setOfNumbers.size < n){
-      newNumber = Math.floor(Math.random() * (max-min) +min);
-      setOfNumbers.add(newNumber);
-  }
-  return Array.from(setOfNumbers).sort((a,b) => a-b);
+  array = Array.from({ length: max }, (v, k) => k + min)
+  durstenfeldShuffle(array)
+  numbers = array.slice(0, n)
+  numbers.sort((a, b) => { return a - b })
+  return numbers
 }
 function bet(){
   numbers = generate(5,1,50);
@@ -34,6 +33,12 @@ function bet(){
     "stars": stars
   }
   return newBet;
+}
+function durstenfeldShuffle(array) {
+  for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 
