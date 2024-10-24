@@ -7,8 +7,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     button = document.getElementById("genBtn")
 
     button.addEventListener('click', (e) => {
-        //generateBet("olMain", "olStars")
+        //este gera os numeros dentro deste euro.js
+        //generateBet()
 
+        //este usa um fetch ao api endpoint definido em app.js
         getNewBet()
     });
 })
@@ -25,6 +27,31 @@ function getNewBet() {
         })
         .catch((error) => console.log(error))
    
+}
+
+function generateBet() {
+    let numbers = generate(5,1,50);
+    let stars = generate(2,1,12)
+    newBet = {
+      "numbers": numbers,
+      "stars": stars
+    }
+    console.log(newBet)
+    displayBet(newBet)
+}
+function generate(n, min, max){
+    let array = Array.from({ length: max }, (v, k) => k + min)
+    durstenfeldShuffle(array)
+    let numbers = array.slice(0, n)
+    numbers.sort((a, b) => { return a - b })
+    console.log(numbers)
+    return numbers
+}
+function durstenfeldShuffle(array) {
+    for (let i = array.length - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
 }
 
 function displayBet(bet){
@@ -45,34 +72,6 @@ function displayBet(bet){
         newLi.innerHTML = star;
         theOLStars.appendChild(newLi);
     });
-}
-
-function generateBet(idNumbers, idStars) {
-    let numbers = getShuffledNumbers(50, 5)
-    let stars = getShuffledNumbers(12, 2)
-
-    createBetElements(idNumbers, numbers)
-    createBetElements(idStars, stars)
-
-    console.log(getBetJSON(numbers, stars))
-}
-
-function getShuffledNumbers(total, amount) {
-    array = Array.from({ length: total }, (v, k) => k + 1)
-
-    durstenfeldShuffle(array)
-
-    numbers = array.slice(0, amount)
-
-    numbers.sort((a, b) => { return a - b })
-    return numbers
-}
-
-function durstenfeldShuffle(array) {
-    for (let i = array.length - 1; i >= 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
 }
 
 function createBetElements(id, array) {
